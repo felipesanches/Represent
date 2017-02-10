@@ -1,3 +1,24 @@
 body {
   background: black;
 }
+
+#buttons div img {
+  border: solid 3px grey;
+  margin:0px;
+  padding: 0px; 
+  display: block;
+  float: left;
+}
+
+#buttons div {
+  margin: 0px;
+  padding: 0px;
+  width: 818px;
+  float: left;
+}
+
+#buttons {
+  width: 818px;
+  float: left;
+  border: solid 3px grey;
+}
