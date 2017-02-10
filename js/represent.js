@@ -1,7 +1,8 @@
 var intro,
     icon,
     icon_img,
-    current_icon = "",
+    current_icon,
+    random_icons,
     icon_names = [
   "agender",
   "androgynous",
@@ -32,7 +33,16 @@ function new_game(){
   intro.setAttribute("style", "display:none");
   icon.setAttribute("style", "display:block");
 
-  draw_random_icon();
+  random_icons = [];
+  while (random_icons.length < icon_names.length){
+    var n = getRandomInt(0, icon_names.length - 1);
+    if (!(icon_names[n] in random_icons)){
+      random_icons.push(icon_names[n]);
+    }
+  }
+  current_icon = 0;
+
+  display_next_icon();
 }
 
 /**
@@ -43,8 +53,8 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function draw_random_icon(){
-  var n = getRandomInt(0, icon_names.length - 1);
-  current_icon = icon_names[n];
-  icon_img.setAttribute("src", "images/SVG/" + current_icon + ".svg");
+function display_next_icon(){
+  var icon_name = random_icons[current_icon];
+  icon_img.setAttribute("src", "images/SVG/" + icon_name + ".svg");
+  current_icon++;
 }
