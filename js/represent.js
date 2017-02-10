@@ -1,7 +1,13 @@
+const DELAY = 1000;
+
 var score,
+    game_is_running = false,
     intro,
     icon,
     icon_img,
+    result_correct,
+    result_incorrect,
+    gameover,
     current_icon,
     random_icons,
     icon_names = [
@@ -26,8 +32,15 @@ function init(){
   intro = document.getElementById("intro");
   icon = document.getElementById("icon");
   icon_img = document.getElementById("icon_img");
+  result_correct = document.getElementById("result_correct");
+  result_incorrect = document.getElementById("result_incorrect");
+  gameover = document.getElementById("gameover");
 
   intro.onclick = new_game;
+  gameover.onclick = function(){
+    gameover.setAttribute("style", "display:none");
+    intro.setAttribute("style", "display:block");
+  }
 }
 
 function new_game(){
@@ -44,6 +57,7 @@ function new_game(){
   }
   current_icon = -1;
 
+  game_is_running = true;
   display_next_icon();
 }
 
@@ -62,6 +76,8 @@ function display_next_icon(){
 }
 
 function answer(button){
+  if (!game_is_running) return;
+
   if (button.getAttribute("id") == random_icons[current_icon]){
     correct_answer();
   } else {
@@ -72,6 +88,7 @@ function answer(button){
 }
 
 function game_over(){
+  game_is_running = false;
   icon.setAttribute("style", "display:none");
   result_incorrect.setAttribute("style", "display:none");
   result_correct.setAttribute("style", "display:none");
@@ -80,14 +97,14 @@ function game_over(){
 
 function next_round(){
   if (current_icon == icon_names.length - 1){
-    game_over();
+    window.setTimeout(game_over, DELAY);
   } else {
     display_next_icon();
     window.setTimeout(function(){
       result_correct.setAttribute("style", "display:none");
       result_incorrect.setAttribute("style", "display:none");
       icon.setAttribute("style", "display:block")
-    }, 500);
+    }, DELAY);
   }
 }
 
@@ -102,5 +119,3 @@ function incorrect_answer(){
   icon.setAttribute("style", "display:none");
   result_incorrect.setAttribute("style", "display:block");
 }
-
-
