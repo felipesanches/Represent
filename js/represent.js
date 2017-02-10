@@ -65,8 +65,18 @@ function answer(button){
   } else {
     incorrect_answer();
   }
+
+  next_round();
 }
 
+function next_round(){
+  display_next_icon();
+  window.setTimeout(function(){
+    result_correct.setAttribute("style", "display:none");
+    result_incorrect.setAttribute("style", "display:none");
+    icon.setAttribute("style", "display:block")
+  }, 2000);
+}
 
 function correct_answer(){
   icon.setAttribute("style", "display:none");
