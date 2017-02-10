@@ -17,8 +17,8 @@ var intro,
   "non_binary",
   "other_gender",
   "questioning",
-  "transexual",
-  "woman"
+  "transgender",
+  "female"
 ];
 
 function init(){ 
@@ -69,12 +69,14 @@ function answer(button){
 
 
 function correct_answer(){
-  alert("OK");
+  icon.setAttribute("style", "display:none");
+  result_correct.setAttribute("style", "display:block");
 }
 
 
 function incorrect_answer(){
-  alert("nananinanão!");
+  icon.setAttribute("style", "display:none");
+  result_incorrect.setAttribute("style", "display:block");
 }
 
 
