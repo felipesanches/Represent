@@ -40,7 +40,7 @@ function new_game(){
       random_icons.push(icon_names[n]);
     }
   }
-  current_icon = 0;
+  current_icon = -1;
 
   display_next_icon();
 }
@@ -54,7 +54,27 @@ function getRandomInt(min, max) {
 }
 
 function display_next_icon(){
+  current_icon++;
   var icon_name = random_icons[current_icon];
   icon_img.setAttribute("src", "images/SVG/" + icon_name + ".svg");
-  current_icon++;
 }
+
+function answer(button){
+  if (button.getAttribute("id") == random_icons[current_icon]){
+    correct_answer();
+  } else {
+    incorrect_answer();
+  }
+}
+
+
+function correct_answer(){
+  alert("OK");
+}
+
+
+function incorrect_answer(){
+  alert("nananinanão!");
+}
+
+
