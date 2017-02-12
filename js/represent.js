@@ -4,6 +4,7 @@ Released under the terms of the GNU General Public License version 2.0 (or later
 Copyright: Felipe C. da S. Sanches <juca@members.fsf.org>
            Tony de Marco <tony@garoa.tv>
            Afonso Coutinho <afonso@yack.com.br>
+           Tamys Guimarães <tamys.guimaraes@gmail.com>
 */
 
 const DELAY = 1000;
@@ -59,7 +60,7 @@ function new_game(){
   random_icons = [];
   while (random_icons.length < icon_names.length){
     var n = getRandomInt(0, icon_names.length - 1);
-    if (!(icon_names[n] in random_icons)){
+    if (random_icons.indexOf(icon_names[n]) <= -1){
       random_icons.push(icon_names[n]);
     }
   }
